@@ -1,0 +1,26 @@
+/* styling for order */
+
+.collectOrder, .acceptOrder, .cancelOrder {
+  background-color: #A4C3B2;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  font-family: arial, sans-serif;
+  text-decoration: none;
+  padding: 4% 15%;
+  width: 100%;
+  margin-bottom: 10%;
+}
+
+.collectOrder:hover, .acceptOrder:hover, .cancelOrder:hover {
+  background-color: rgb(133, 160, 145);
+}
+
+.buttons{
+  font-size: 1em;
+}
+
+.comments{
+  text-align: left;
+}
+  

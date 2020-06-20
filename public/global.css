@@ -1,0 +1,80 @@
+/* global css for all body html */
+body {
+  font-family: arial, sans-serif;
+  background-color: #F6FFF8;
+  margin: 0;
+}
+
+/*global css for all tabels*/
+table{
+  margin-top: 1%;
+  border-collapse: collapse;
+  width: 99%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+  table-layout: fixed;
+  
+}
+
+/* removes empty row in tabel */
+tfoot { 
+  display: none;
+}
+
+/* row styling */
+td, th {
+  border: 1px solid #dddddd;
+  padding: 10px;
+  text-align: center;
+}
+
+/* row styling */
+td{
+  font-size: 1.2em;
+}
+
+/* row styling */
+tr:nth-child(even) {
+  background-color: #CCE3DE;
+}
+
+/* row styling */
+tr:nth-child(odd) {
+  background-color: #A4C3B2;
+}
+
+/* navigation styling */
+.navbar {
+  overflow: hidden;
+  background-color: #A4C3B2;
+  position: sticky; 
+  top: 0;
+  width: 100%; 
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+}
+
+/* navigation styling */
+.navbar a {
+  display: block;
+  color: black;
+  font-weight: bold;
+  text-align: left;
+  padding: 14px 16px;
+  margin-right: 80%;
+  text-decoration: none;
+}
+
+/* navigation styling on hover */
+.navbar a:hover {
+  font-size: 1.2em;
+  font-weight: bolder;
+  color: black;
+}
+
+/* navigation logo */
+#logo_frontpage { 
+  max-width: 160px;
+  float: right;
+  padding-right: 2%;
+}
