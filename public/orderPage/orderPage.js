@@ -68,9 +68,10 @@ $(document).ready(() => {
     $(document).on("click", ".acceptOrder", acceptedOrder);
     $(document).on("click", ".cancelOrder", canceledOrder);
 
+    const url = "http://ec2-35-174-208-212.compute-1.amazonaws.com";
 
     // Jquery getting our json order data from API
-    $.get("http://ec2-54-208-56-148.compute-1.amazonaws.com/orderslist/", (data) => {
+    $.get(url+"/orderslist/", (data) => {
     //$.get("http://localhost:8888/orderslist", (data) => {
 
         // sorts the json data from our get request by the time value
