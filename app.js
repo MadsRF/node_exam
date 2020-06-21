@@ -2,6 +2,14 @@
 const express = require("express");
 const app = express();
 
+
+// parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: false }));
+ 
+// parse application/json
+app.use(express.json());
+
+
 // Makes public folder static, so it's always accessable    
 app.use(express.static("public"));
 
