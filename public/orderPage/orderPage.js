@@ -70,7 +70,7 @@ $(document).ready(() => {
 
 
     // Jquery getting our json order data from API
-    $.get("ec2-54-208-56-148.compute-1.amazonaws.com/orderslist/", (data) => {
+    $.get("http://ec2-54-208-56-148.compute-1.amazonaws.com/orderslist/", (data) => {
     //$.get("http://localhost:8888/orderslist", (data) => {
 
         // sorts the json data from our get request by the time value
