@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env PORT=9999 node app.js",
-    "start-dev": "cross-env PORT=8888 nodemon app.js "
+    "start": "cross-env PORT=80 node app.js ",
+    "start-dev": "cross-env PORT=8888 nodemon app.js ",
+    "start-prod": "sudo cross-env PORT=80 pm2 start app.js -f"
   },
   "author": "",
   "license": "ISC",
