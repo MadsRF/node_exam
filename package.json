@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env PORT=80 node app.js ",
     "start-dev": "cross-env PORT=8888 nodemon app.js ",
-    "start-prod": "sudo cross-env PORT=80 pm2 start app.js -f",
+    "start-prod": "cross-env PORT=80 pm2 start app.js -f",
     "see-pm2": "pm2 list",
     "kill-pm2": "pm2 delete app"
   },
