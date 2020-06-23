@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/global.css">
+    <title>Signup</title>
+</head>
+<body>
+    
+    <div class="signupContainer">
+
+        <img class="doglogo" src="../logo.png" alt="logo">
+        <h1 class="headtext">Sign up</h1>
+        <span>Password must be 8 characters long</span><br><br>
+        
+        <form action="/signup" method="post">
+            
+            <label for="username">Username:</label><br>
+            <input type="text" placeholder="Username" name="username" required><br><br>
+            <label for="password">Password:</label><br>
+            <input type="password" placeholder="Password" name="password" required><br><br>
+            <input class="myButton" type="submit" value="Create New User" onclick="alert('page will redirect to login')">
+        
+        </form>
+        
+        <form method="get" action="../loginPage/loginPage.html">
+
+            <button class="myButton" type="submit">Go to Login</button>
+        
+        </form>
+    
+    </div>
+</body>
+</html>

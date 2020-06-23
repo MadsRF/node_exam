@@ -83,7 +83,7 @@ tr:nth-child(odd) {
 /* ----------------login------------------ */
 
 /* Login form */
-.loginContainer {
+.loginContainer, .signupContainer {
   text-align: center;
   font-weight: bold;
   text-transform: capitalize;
