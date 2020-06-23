@@ -74,7 +74,7 @@ $(document).ready(() => {
     let urlFormat = url.substr(0, url.lastIndexOf("/")-10);
 
     // Jquery getting our json order data from API
-    $.get(urlFormat+"/orderslist", (data) => {
+    $.get(urlFormat+"/orders", (data) => {
     
         // sorts the json data from our get request by the time value
         let sorted = data.sort(function (a, b) {
@@ -84,7 +84,7 @@ $(document).ready(() => {
         // Loops through our orderlist api and sets up how the table should look like
         let rows = sorted.map(item => {
 
-            let $clone = $('#frontpage_new_ordertable tfoot tr').clone();
+            let $clone = $('#orderTable tfoot tr').clone();
 
             //this is data we don't display but use to be able to check diffrent things 
             $clone.data("id", item.id);
@@ -129,7 +129,7 @@ $(document).ready(() => {
         });
 
         // appends to our frontpage html 
-        $("#frontpage_new_ordertable tbody").append(rows);
+        $("#orderTable tbody").append(rows);
 
 
     });

@@ -24,8 +24,8 @@ app.get(("/itemPage"), (req, res) => {
     return res.sendFile(__dirname + "/public/itemPage/itemPage.html");
 });
 
-app.get(("/archive"), (req, res) => {
-    return res.status(501).send({ response: "Not implmented yet" });
+app.get(("/archivePage"), (req, res) => {
+    return res.sendFile(__dirname + "/public/archivePage/archivePage.html");
 });
 
 app.get(("/"), (req, res) => {
