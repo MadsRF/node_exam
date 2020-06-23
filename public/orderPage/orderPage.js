@@ -63,17 +63,19 @@ $(document).ready(() => {
         });
     }
 
-    // event listener
+    // Event listener
     $(document).on("click", ".collectOrder", collectedOrder);
     $(document).on("click", ".acceptOrder", acceptedOrder);
     $(document).on("click", ".cancelOrder", canceledOrder);
 
-    const url = "http://ec2-35-174-208-212.compute-1.amazonaws.com";
+
+    // Takes the current url 
+    const url = window.location.href;
+    let urlFormat = url.substr(0, url.lastIndexOf("/")-10);
 
     // Jquery getting our json order data from API
-    $.get(url+"/orderslist/", (data) => {
-    //$.get("http://localhost:8888/orderslist", (data) => {
-
+    $.get(urlFormat+"/orderslist", (data) => {
+    
         // sorts the json data from our get request by the time value
         let sorted = data.sort(function (a, b) {
             return parseFloat(a.time) - parseFloat(b.time);

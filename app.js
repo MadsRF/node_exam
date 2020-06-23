@@ -33,10 +33,11 @@ app.get(("/"), (req, res) => {
 });
 
 
-// import routes 
-const firebaseRoute = require("./routes/firebase.js");
+// global middelware sits between backend and frontend. works on all routes
+const firebase = require("./routes/firebase.js");
+
 //set up routes with our server
-app.use(firebaseRoute);
+app.use(firebase);
 
 
 // Port we listen to for incoming trafic

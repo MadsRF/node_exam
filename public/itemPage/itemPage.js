@@ -30,8 +30,13 @@ $(document).ready(() => {
     $(document).on("click", ".deleteProduct", deletedProduct);
 
     
+    // Takes the current url 
+    const url = window.location.href;
+    let urlFormat = url.substr(0, url.lastIndexOf("/")-9);
+
+
     // Jquery getting our json product data from API
-    $.get("http://localhost:8888/products", (data) => {
+    $.get(urlFormat+"/products", (data) => {
 
         let shopId = data[0].id
             console.log(shopId);
