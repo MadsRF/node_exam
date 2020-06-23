@@ -4,7 +4,7 @@ const router = require("express").Router();
 
 //firebase server validation and connection
 const admin = require("firebase-admin");
-let serviceAccount = require("../config/test-3ad87-bc8cc74b3d08.json");
+let serviceAccount = require("../configuration/test-3ad87-bc8cc74b3d08.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
