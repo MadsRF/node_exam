@@ -1,5 +1,5 @@
 # removes config folder from git
-*.config
+config/
 
 # Logs
 logs
