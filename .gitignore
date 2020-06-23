@@ -1,3 +1,6 @@
+# removes config folder from git
+*.config
+
 # Logs
 logs
 *.log
