@@ -1,5 +1,8 @@
 # removes config folder from git
 config/
+*.json 
+
+test-3ad87-bc8cc74b3d08.json
 
 # Logs
 logs
