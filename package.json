@@ -9,17 +9,29 @@
     "start-dev": "cross-env PORT=8888 nodemon app.js ",
     "start-prod": "cross-env PORT=80 pm2 start app.js -f",
     "see-pm2": "pm2 list",
-    "kill-pm2": "pm2 delete app"
+    "kill-pm2": "pm2 delete app",
+    "createdb": "knex migrate:rollback && knex migrate:latest && knex seed:run",
+    "migrate:latest": "knex migrate:latest",
+    "migrate:make": "knex migrate:make",
+    "migrate:rollback": "knex migrate:rollback",
+    "seed:make": "knex seed:make",
+    "seed:run": "knex seed:run"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
+    "express-rate-limit": "^5.1.3",
+    "express-session": "^1.17.1",
     "firebase-admin": "^8.10.0",
     "form-serialize": "^0.7.2",
+    "knex": "^0.21.1",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.3",
+    "objection": "^2.2.0",
     "pm2": "^4.4.0"
   }
 }

@@ -27,7 +27,7 @@ $(document).ready( () => {
 
             // this checks if the order has been accepted
             if (item.order_status === true) {
-                $clone.find('.order_status').html("<h4>Accepted</h4>");
+                $clone.find('.order_status').html("<h4>Collected</h4>");
             } else {
 
                 $clone.find('.order_status').html("<h4>Canceled</h4>");
