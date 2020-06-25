@@ -1,9 +1,9 @@
 // same as app function in app.js just called router
 const router = require("express").Router();
 
-
 //firebase server validation and connection
 const admin = require("firebase-admin");
+
 let serviceAccount = require("../configuration/test-3ad87-bc8cc74b3d08.json");
 
 admin.initializeApp({

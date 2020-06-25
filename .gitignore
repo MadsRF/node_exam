@@ -1,6 +1,7 @@
-# removes config folder from git
-configuration/
-
+#removes password from getting pushed to github
+config.json
+mysqlCredentials.js
+test-3ad87-bc8cc74b3d08.json
 
 
 # Logs
