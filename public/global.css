@@ -63,6 +63,7 @@ tr:nth-child(odd) {
   padding: 14px 16px;
   margin-right: 80%;
   text-decoration: none;
+  cursor: pointer;
 }
 
 /* navigation styling on hover */
@@ -80,7 +81,7 @@ tr:nth-child(odd) {
 }
 
 
-/* ----------------login------------------ */
+/* ----------------login/signup------------------ */
 
 /* Login form */
 .loginContainer, .signupContainer {
@@ -129,4 +130,13 @@ input[type=text], input[type=password], select {
 }
 .myButton:hover {
   background-color: rgb(133, 160, 145);
+}
+
+
+/*----------noAUTH------------*/
+
+.noAuth{
+
+  text-align: center;
+
 }

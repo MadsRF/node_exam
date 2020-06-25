@@ -34,10 +34,10 @@ Model.knex(knex);
 
 function checkAuth(req, res, next) {
     if (req.session.user_id != config.sessionSecret)  {
-        console.log(req.session.user_id, config.sessionSecret);
-      res.status(401).send({ response: "no access "});
+      res.status(401).sendFile(__dirname + "/public/noAuthPage/noAuthPage.html");
     } else {
-      next();
+        //console.log(req.session.user_id + " = " + config.sessionSecret);
+        next();
     };
 };
 
