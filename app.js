@@ -62,6 +62,11 @@ app.get(("/archivePage"), checkAuth, (req, res) => {
     return res.sendFile(__dirname + "/public/archivePage/archivePage.html");
 });
 
+app.get(("/messagePage"), checkAuth, (req, res) => {
+    console.log("messagePage");
+    return res.sendFile(__dirname + "/public/messagePage/messagePage.html");
+});
+
 
 
 // Global middelware sits between backend and frontend. works on all routes

@@ -20,4 +20,9 @@ $(document).ready( () => {
         window.location.replace("/itemPage");
     });
 
+    $("#messagePage").click( () => {
+        console.log("Message Board");
+        window.location.replace("/messagePage");
+    });
+
 });
