@@ -40,7 +40,7 @@ $(document).ready( () => {
     $.get(urlFormat+"/products", (data) => {
 
         let shopId = data[0].id
-            console.log(shopId);
+            //console.log(shopId);
         
         let rows = data[0].products.map(item => {
 
@@ -58,7 +58,7 @@ $(document).ready( () => {
             return $clone;
         });
         
-        console.log(rows)
+        //console.log(rows)
 
         // appends to our frontpage html 
         $("#itemTable tbody").append(rows);

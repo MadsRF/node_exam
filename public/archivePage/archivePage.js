@@ -4,7 +4,7 @@ $(document).ready( () => {
     const url = window.location.href;
     let urlFormat = url.substr(0, url.lastIndexOf("/")-12);
 
-    console.log(urlFormat)
+    //console.log(urlFormat)
 
     // Jquery getting our json order data from API
     $.get(urlFormat+"/archive", (data) => {

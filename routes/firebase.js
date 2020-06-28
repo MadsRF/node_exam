@@ -28,6 +28,7 @@ router.use(bodyParser.json());
 //routes for post request for orders and products
 router.post("/collectedOrder", function (req, res) {
   db.collection('orders').doc(req.body.orderId).update({ archived_status: true });
+  db.collection('orders').doc(req.body.orderId).update({ order_status: true });
   return res.status(202).send(true);
 });
 

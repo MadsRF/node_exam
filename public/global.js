@@ -25,4 +25,13 @@ $(document).ready( () => {
         window.location.replace("/messagePage");
     });
 
+    $("#profilePage").click( () => {
+        console.log("Profile");
+        window.location.replace("/ProfilePage");
+    });
+
+
+    
+
+
 });

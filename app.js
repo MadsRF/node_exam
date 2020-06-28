@@ -50,7 +50,6 @@ app.use(session({
 }));
 
 
-
 /* Setup Knex with Objection */
 const { Model } = require('objection');
 const Knex = require('knex');
@@ -99,16 +98,21 @@ app.get(("/messagePage"), checkAuth, (req, res) => {
     return res.sendFile(__dirname + "/public/messagePage/messagePage.html");
 });
 
-
+app.get(("/profilePage"), checkAuth, (req, res) => {
+    console.log("profilePage");
+    return res.sendFile(__dirname + "/public/profilePage/profilePage.html");
+});
 
 
 // Global middelware sits between backend and frontend. works on all routes
 const firebase = require("./routes/firebase.js");
 const authRoute = require('./routes/auth.js');
+const profileRoute = require('./routes/profile.js');
 
 // Set up routes with our server
 app.use(firebase);
 app.use(authRoute);
+app.use(profileRoute);
 
 
 

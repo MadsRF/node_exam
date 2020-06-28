@@ -43,6 +43,8 @@ tr:nth-child(odd) {
   background-color: #A4C3B2;
 }
 
+/* ----------------Navigationbar------------------ */
+
 /* navigation styling */
 .navbar {
   overflow: hidden;
@@ -77,6 +79,17 @@ tr:nth-child(odd) {
   max-width: 160px;
   float: right;
   padding-right: 2%;
+}
+
+.profile {
+  float: right;
+}
+
+#profilePage {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  padding: 10px;
 }
 
 

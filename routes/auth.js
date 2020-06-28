@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const User = require("../models/User.js");
-const sessionId = require("../configuration/config.json")
+const sessionId = require("../configuration/config.json");
 
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
@@ -28,6 +28,9 @@ router.post('/login', (req, res) => {
                             //console.log(result) 
                             if (result == true) {
                                 req.session.user_id = sessionId.sessionSecret;
+                                req.session.username = foundUsername[0].username;
+                                req.session.password = password;
+                                console.log("this is the user:", req.session.username, "and password:", req.session.password);
                                 return res.redirect("/orderPage");
                             } else {
                                 return res.status(401).send({ response: "username or password incorrect, try again" });
@@ -78,9 +81,10 @@ router.post('/signup', (req, res) => {
 });
 
 router.get('/logout', (req, res) => { 
-    console.log("logout", req.body);
-    delete req.session.user_id;
-    res.redirect('/');
+    req.session.destroy(function(err) {
+        console.log("logout");
+        return res.redirect('/');  
+    });
 });
 
 module.exports = router;
