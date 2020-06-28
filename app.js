@@ -40,11 +40,6 @@ io.on("connection", socket => {
 });
 
 
-
-
-
-
-
 // You need to copy the config.template.json file and fill out your own secret
 const session = require("express-session");
 const config = require("./configuration/config.json");
@@ -91,9 +86,8 @@ app.get(("/itemPage"), checkAuth, (req, res) => {
 
 app.get(("/addItemPage"), checkAuth, (req, res) => {
     console.log("addItemPage");
-    return res.sendFile(__dirname + "/public/itemPage/addItemPage/addItemPage.html");
+    return res.sendFile(__dirname + "/public/addItemPage/addItemPage.html");
 });
-
 
 app.get(("/archivePage"), checkAuth, (req, res) => {
     console.log("archivePage");

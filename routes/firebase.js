@@ -118,15 +118,17 @@ router.get("/orders", (req, res) => {
 
 // adds new product to coffeshop menu
 router.post("/newProduct", (req, res) => {
-  console.log(req.body)
+  //console.log(req.body)
+  
   let newProduct = {
-    name: req.body.name,
-    price: req.body.price,
-    size: req.body.size,
-    quantity: req.body.quantity
+    name: req.body.itemName,
+    price: req.body.itemPrice,
+    size: req.body.itemSize,
+    quantity: req.body.itemQuantity
   };
 
   db.collection('coffeeshops').doc(currentCoffeeshopFirebaseId).collection("products").add(newProduct);
+  return res.status(202).send(true);
 });
 
 

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../global.css">
+  <link rel="stylesheet" href="./additempagecss.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <title>Add Item Page</title>
 </head>
@@ -21,31 +22,31 @@
     <a id="itemPage">Products</a>
   </div>
 
-
-  <form id="productForm" method="POST" action="/newProduct"> 
+  <!-- add product form -->
+  <div class="productContainer"> 
 
     <label for="name">Name: </label><br>
-    <input type="text" name="name" placeholder="Item name..."><br><br>
+    <input type="text" id="name" placeholder="Item name..."><br><br>
     
     <label for="price">Price: </label><br>
-    <input type="number" name="price" placeholder="Item price..."><br><br>
+    <input type="number" id="price" placeholder="Item price..."><br><br>
     
     <label for="size">Size: </label><br>
-    <select name="size">
+    <select id="size">
       <option value="Small">Small</option>
       <option value="Medium">Medium</option>
       <option value="Large">Large</option>
     </select><br><br>
     
     <label for="quantity">Quantity: </label><br>
-    <input type="text" name="quantity" placeholder="Value + (ml, L, g, Kg,) Ex: 100 ml"><br><br>
+    <input type="text" id="quantity" placeholder="Value + (ml, L, g, Kg,) Ex: 100 ml"><br><br>
 
     <input type="submit" id="productButton" value="Submit">
   
-  </form>
-
+  </div>
 
   <script src="../global.js"></script>
+  <script src="./addItemPage.js"></script>
 
 </body>
 
