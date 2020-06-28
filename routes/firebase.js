@@ -243,5 +243,5 @@ router.get("/archive", (req, res) => {
 
 });
 
-// last
+// exports the routes
 module.exports = router

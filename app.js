@@ -13,6 +13,38 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 
+/* The createServer method allows Node.js to act as a web server and receive requests */
+const server = require("http").createServer(app);
+
+const io = require("socket.io")(server);
+
+
+/*Helmet is a collection of 11 smaller middleware functions that set HTTP response headers. 
+Running app.use(helmet()) will not include all of these middleware functions by default.*/ 
+const helmet = require("helmet");
+app.use(helmet());
+
+// used to avoid cross site scripting
+// const escape = require("escape-html");
+
+
+io.on("connection", socket => {
+
+    socket.on("SentMessage", (data) => {
+        
+        // Goes out to all
+        io.emit("receivedMessage", { userMessage: data.userMessage });
+        console.log(data.userMessage)
+   
+    });
+});
+
+
+
+
+
+
+
 // You need to copy the config.template.json file and fill out your own secret
 const session = require("express-session");
 const config = require("./configuration/config.json");
@@ -80,10 +112,10 @@ app.use(authRoute);
 
 
 // Port we listen to for incoming trafic
-const port = process.env.PORT ? process.env.PORT : 8888;
+const port = 8888;
 
 // Error handling on server upstart
-const server = app.listen(port, (error) => {
+server.listen(port, (error) => {
     if (error) {
         console.log("Error starting the server");
     }
