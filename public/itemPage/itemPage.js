@@ -1,4 +1,8 @@
-$(document).ready(() => {
+$(document).ready( () => {
+
+    $("#addButton").click( () => {
+        window.location.href = "/addItemPage";
+    });
 
     // event handler at the top-level inside doc.ready
     function deletedProduct() {
@@ -25,15 +29,12 @@ $(document).ready(() => {
         });
     }
 
-
     // event listener
     $(document).on("click", ".deleteProduct", deletedProduct);
 
-    
     // Takes the current url 
     const url = window.location.href;
     let urlFormat = url.substr(0, url.lastIndexOf("/")-9);
-
 
     // Jquery getting our json product data from API
     $.get(urlFormat+"/products", (data) => {
@@ -43,11 +44,10 @@ $(document).ready(() => {
         
         let rows = data[0].products.map(item => {
 
-            let $clone = $('#frontpage_new_ordertable tfoot tr').clone();
+            let $clone = $('#itemTable tfoot tr').clone();
             $clone.data("productId", item.id);
             $clone.data("shopId", shopId);
             
-
             $clone.find('.name').html(item.name);
             $clone.find('.price').html(item.price + " kr.");
             $clone.find('.size').html(item.size);
@@ -61,34 +61,8 @@ $(document).ready(() => {
         console.log(rows)
 
         // appends to our frontpage html 
-        $("#frontpage_new_ordertable tbody").append(rows);
+        $("#itemTable tbody").append(rows);
 
     });
 
-
-    // Get the modal
-    var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "block";
-    };
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    };
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        };
-    };
 });

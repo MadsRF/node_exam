@@ -30,15 +30,15 @@ router.post('/login', (req, res) => {
                                 req.session.user_id = sessionId.sessionSecret;
                                 return res.redirect("/orderPage");
                             } else {
-                                return res.status(401).redirect("/");
+                                return res.status(401).send({ response: "username or password incorrect, try again" });
                             };
                         });                        
                     });      
                 } else {
-                    return res.status(400).redirect("/");
+                    return res.status(401).send({ response: "username or password incorrect, try again" });
                 }; 
             } catch (error) {
-                return res.status(400).redirect("/");
+                return res.status(400).send({ response: "Something went wrong when getting information from database" });
             };
         });
     };

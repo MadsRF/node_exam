@@ -89,6 +89,12 @@ app.get(("/itemPage"), checkAuth, (req, res) => {
     return res.sendFile(__dirname + "/public/itemPage/itemPage.html");
 });
 
+app.get(("/addItemPage"), checkAuth, (req, res) => {
+    console.log("addItemPage");
+    return res.sendFile(__dirname + "/public/itemPage/addItemPage/addItemPage.html");
+});
+
+
 app.get(("/archivePage"), checkAuth, (req, res) => {
     console.log("archivePage");
     return res.sendFile(__dirname + "/public/archivePage/archivePage.html");
@@ -98,6 +104,7 @@ app.get(("/messagePage"), checkAuth, (req, res) => {
     console.log("messagePage");
     return res.sendFile(__dirname + "/public/messagePage/messagePage.html");
 });
+
 
 
 

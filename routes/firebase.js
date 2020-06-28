@@ -118,7 +118,7 @@ router.get("/orders", (req, res) => {
 
 // adds new product to coffeshop menu
 router.post("/newProduct", (req, res) => {
-
+  console.log(req.body)
   let newProduct = {
     name: req.body.name,
     price: req.body.price,

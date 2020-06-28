@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(document).ready( () => {
 
     // event handler at the top-level inside doc.ready
     function collectedOrder() {
