@@ -22,7 +22,7 @@ $("#messageSendButton").click(() => {
 socket.on("receivedMessage", data => {
     console.log(data.userMessage)
 
-    $("#messageContainer").append(`<div>${data.userMessage.username}:<br> ${data.userMessage.message}</div><br>`)
+    $("#messageContainer").append(`<div>${data.userMessage.username}:<br> - ${data.userMessage.message}</div><br>`)
     
 });
 

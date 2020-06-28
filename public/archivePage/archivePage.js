@@ -37,7 +37,7 @@ $(document).ready( () => {
             $clone.find('.customer_name').text(item.customer_name);
             $clone.find('.date').text(item.date);
             $clone.find('.comments').text(item.comments);
-            $clone.find('.total').text(item.total);
+            $clone.find('.total').text(item.total + " kr.");
 
             // this is our time typecast because our time format is ex. number 103040. after cast its "10:30:40" = "hour:minute:second"
             let timeToString = item.time.toString();
