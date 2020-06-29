@@ -1,12 +1,20 @@
+// Use the express.Router class to create modular, mountable route handlers. 
+// A Router instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.
 const router = require('express').Router();
 
 const User = require("../models/User.js");
+
+// Connects to the session secret  
 const sessionId = require("../configuration/config.json");
 
+
+// A library to help you hash passwords.
 const bcrypt = require('bcrypt');
+// When you are hashing your data the module will go through a series of rounds to give you a secure hash.
 const saltRounds = 12;
 
 
+// route for login 
 router.post('/login', (req, res) => {
     // get request from body
     const { username, password } = req.body;
@@ -30,7 +38,7 @@ router.post('/login', (req, res) => {
                                 req.session.user_id = sessionId.sessionSecret;
                                 req.session.username = foundUsername[0].username;
                                 req.session.password = password;
-                                console.log("this is the user:", req.session.username, "and password:", req.session.password);
+                                console.log("user:", req.session.username, "has logged in");
                                 return res.redirect("/orderPage");
                             } else {
                                 return res.status(401).send({ response: "username or password incorrect, try again" });
@@ -47,6 +55,7 @@ router.post('/login', (req, res) => {
     };
 });
 
+// route for creating user 
 router.post('/signup', (req, res) => {
     const { username, password } = req.body;
     console.log("signup", req.body);
@@ -80,6 +89,7 @@ router.post('/signup', (req, res) => {
     }
 });
 
+// Route for logging out. Uses req.session.destroy to remove session values.
 router.get('/logout', (req, res) => { 
     req.session.destroy(function(err) {
         console.log("logout");
@@ -87,4 +97,5 @@ router.get('/logout', (req, res) => {
     });
 });
 
+// Used to export routes so they are accessible 
 module.exports = router;

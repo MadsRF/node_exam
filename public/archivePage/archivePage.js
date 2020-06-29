@@ -25,13 +25,12 @@ $(document).ready( () => {
             $clone.data("customer_email", item.customer_email);
             $clone.data("order_status", item.order_status);
 
-            // this checks if the order has been accepted
+            // this checks if the order has been accepted or canceled
             if (item.order_status === true) {
                 $clone.find('.order_status').html("<h4>Collected</h4>");
             } else {
-
                 $clone.find('.order_status').html("<h4>Canceled</h4>");
-            }
+            };
 
             // this is data we display
             $clone.find('.customer_name').text(item.customer_name);

@@ -1,5 +1,6 @@
 $(document).ready( () => {
 
+    // jquery click function for adding item to products
     $("#productButton").click( () => {
 
         let itemInfo = {

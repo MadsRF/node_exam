@@ -23,20 +23,19 @@
     <a id="itemPage">Products</a>
   </div>
 
-    <script defer src="http://localhost:8888/socket.io/socket.io.js"></script>
-    <script defer src="./messagePage.js"></script>
+  <!-- source for socket functionality -->
+  <script defer src="http://localhost:8888/socket.io/socket.io.js"></script>
+  <script defer src="./messagePage.js"></script>
 
-    <!-- message container -->
-    <div class="messageBoard">
-        <div id="messageContainer"></div>
-        <input id="usernameInput" placeholder="Name" type="text">
-        <input id="messageTextInput" placeholder="Message" type="text">
-        <button id="messageSendButton" type="submit">Send</button>
-    </div>
+  <!-- message container -->
+  <div class="messageBoard">
+      <div id="messageContainer"></div>
+      <input id="usernameInput" placeholder="Name" type="text">
+      <input id="messageTextInput" placeholder="Message" type="text">
+      <button id="messageSendButton" type="submit">Send</button>
+  </div>
 
-    
-
-    <script src="../global.js"></script>
+  <script src="../global.js"></script>
 
 </body>
 </html>

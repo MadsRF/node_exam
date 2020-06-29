@@ -1,25 +1,28 @@
 $(document).ready( () => {
 
-const socket = io.connect("http://localhost:8888");
+  // Tells our socket to run on port 8888
+  const socket = io.connect(":8888");
 
-
-$("#messageSendButton").click(() => {
+  $("#messageSendButton").click(() => {
+    
+    // Message containing our 2 inputs username and message
     const userMessage = { 
       username:  $("#usernameInput").val(),
       message:  $("#messageTextInput").val()   
     };
 
-    console.log(userMessage);
+    //console.log(userMessage);
 
-    // emit means to send out
+    // Emit means to send out
     socket.emit("SentMessage", { userMessage });
-    
-    // empties text input 
+      
+    // Empties text input after sending 
     $("#messageTextInput").val("")
 
-});
+  });
 
-socket.on("receivedMessage", data => {
+  // Used to display received message from server
+  socket.on("receivedMessage", data => {
     console.log(data.userMessage)
 
     $("#messageContainer").append(`<div>${data.userMessage.username}:<br> - ${data.userMessage.message}</div><br>`)

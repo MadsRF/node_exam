@@ -1,4 +1,4 @@
-
+// Creates our table users and collums 
 exports.up = function(knex) {
     return knex.schema
         .createTable('users', table => {
@@ -11,9 +11,8 @@ exports.up = function(knex) {
         })
 };
 
-
+// Deletes users table
 exports.down = function(knex) {
-  return knex.schema
-    .dropTableIfExists('electives')
-    .dropTableIfExists('users');
+    return knex.schema
+        .dropTableIfExists('users');
 };

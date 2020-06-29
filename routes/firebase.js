@@ -1,10 +1,10 @@
-// same as app function in app.js just called router
+// Use the express.Router class to create modular, mountable route handlers. 
+// A Router instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.
 const router = require("express").Router();
 
-//firebase server validation and connection
+// Firebase server validation and connection
 const admin = require("firebase-admin");
-
-let serviceAccount = require("../configuration/test-3ad87-bc8cc74b3d08.json");
+const serviceAccount = require("../configuration/test-3ad87-bc8cc74b3d08.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -13,19 +13,18 @@ admin.initializeApp({
 const db = admin.firestore();
 
 
-// bodyParser.urlencoded(options) Parses the text as URL encoded data (which is how browsers tend to send form data from regular forms set to POST) 
+// bodyParser.urlencoded(options) Parses the text as URL encoded data 
+// (which is how browsers tend to send form data from regular forms set to POST) 
 // and exposes the resulting object (containing the keys and values) on req.body
 const bodyParser = require("body-parser");
 
-router.use(bodyParser.urlencoded({
-  extended: true
-}));
+router.use(bodyParser.urlencoded({extended: true}));
 
 // bodyParser.json(options)Parses the text as JSON and exposes the resulting object on req.body.
 router.use(bodyParser.json());
 
 
-//routes for post request for orders and products
+// routes for post request for orders and products
 router.post("/collectedOrder", function (req, res) {
   db.collection('orders').doc(req.body.orderId).update({ archived_status: true });
   db.collection('orders').doc(req.body.orderId).update({ order_status: true });
@@ -108,16 +107,13 @@ router.get("/orders", (req, res) => {
         if (orders.length == number_of_orders) {
           return res.json(orders)
         }
-
       });
-
     });
-
   });
-
 });
 
-// adds new product to coffeshop menu
+
+// Adds new product to coffeshop menu
 router.post("/newProduct", (req, res) => {
   //console.log(req.body)
   
@@ -133,7 +129,7 @@ router.post("/newProduct", (req, res) => {
 });
 
 
-// route for database products 
+// Route for fb products 
 router.get("/products", (req, res) => {
   let products = []
 
@@ -143,7 +139,7 @@ router.get("/products", (req, res) => {
       console.log('No such document!');
     }
     else {
-      // creating an order object and assigning the ID and the rest of the information from the database
+      // Creating an order object and assigning the ID and the rest of the information from the database
       let coffeeshop = {
         id: coffeshopSnapshot.id,
         coordinates: coffeshopSnapshot.data().coordinates,
@@ -152,12 +148,12 @@ router.get("/products", (req, res) => {
         products: []
       };
 
-      // using the id, to get the products from the subcollection
+      // Using the id, to get the products from the subcollection
       db.collection('coffeeshops/' + coffeeshop.id + '/products').get().then(productSnapshot => {
 
-        // iterating over the product snapshot
+        // Iterating over the product snapshot
         productSnapshot.forEach(productDoc => {
-          // creating a product object
+          // Creating a product object
           let product = {
             id: productDoc.id,
             name: productDoc.data().name,
@@ -166,18 +162,17 @@ router.get("/products", (req, res) => {
             quantity: productDoc.data().quantity
           }
 
-          // then we push the product object to the list of products in the order object
+          // Then we push the product object to the list of products in the order object
           coffeeshop.products.push(product)
 
         });
 
-        // we are finished iterating over the productsnapshot and now we can push it to the orders list
+        // We are finished iterating over the productsnapshot and now we can push it to the orders list
         products.push(coffeeshop)
 
         return res.json(products)
-
       });
-    }
+    };
   });
 });
   
@@ -237,14 +232,10 @@ router.get("/archive", (req, res) => {
         if (orders.length == number_of_orders) {
           return res.json(orders)
         }
-
       });
-
     });
-
   });
-
 });
 
-// exports the routes
+// Used to export routes so they are accessible 
 module.exports = router

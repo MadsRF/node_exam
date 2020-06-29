@@ -29,9 +29,5 @@ $(document).ready( () => {
         console.log("Profile");
         window.location.replace("/ProfilePage");
     });
-
-
     
-
-
 });

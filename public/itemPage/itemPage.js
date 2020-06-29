@@ -1,5 +1,6 @@
 $(document).ready( () => {
 
+    // jquery click function for route to addItemPage 
     $("#addButton").click( () => {
         window.location.href = "/addItemPage";
     });
@@ -34,7 +35,7 @@ $(document).ready( () => {
 
     // Takes the current url 
     const url = window.location.href;
-    let urlFormat = url.substr(0, url.lastIndexOf("/")-9);
+    const urlFormat = url.substr(0, url.lastIndexOf("/")-9);
 
     // Jquery getting our json product data from API
     $.get(urlFormat+"/products", (data) => {
@@ -45,6 +46,7 @@ $(document).ready( () => {
         let rows = data[0].products.map(item => {
 
             let $clone = $('#itemTable tfoot tr').clone();
+            
             $clone.data("productId", item.id);
             $clone.data("shopId", shopId);
             

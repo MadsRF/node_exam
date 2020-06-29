@@ -1,33 +1,33 @@
-// Framework for our server
+// Initiliazing the server with the Express framework
 const express = require("express");
 const app = express();
 
-/* Middelware */ 
 // Makes public folder static, so it's always accessable    
 app.use(express.static(__dirname + "/public"));
 
-// parse application/x-www-form-urlencoded
+// A new body object containing the parsed data is populated on the request object after the middleware 
+// (i.e. req.body). This object will contain key-value pairs, where the value can be a string or array 
+// (when extended is false), or any type (when extended is true).
 app.use(express.urlencoded({ extended: false }));
- 
-// parse application/json
+
+// Returns middleware that only parses json and only looks at requests where the Content-Type header matches the type option.
 app.use(express.json());
 
-
-/* The createServer method allows Node.js to act as a web server and receive requests */
+// The createServer method allows Node.js to act as a web server and receive requests 
 const server = require("http").createServer(app);
 
+// Socket.IO enables real-time bidirectional event-based communication.
 const io = require("socket.io")(server);
 
-
-/*Helmet is a collection of 11 smaller middleware functions that set HTTP response headers. 
-Running app.use(helmet()) will not include all of these middleware functions by default.*/ 
+// Helmet is a collection of 11 smaller middleware functions that set HTTP response headers. 
+// Running app.use(helmet()) will not include all of these middleware functions by default. 
 const helmet = require("helmet");
 app.use(helmet());
 
-// used to avoid cross site scripting
+// Used to avoid cross site scripting. (dosen't work because i'm sending a object and not a string)
 // const escape = require("escape-html");
 
-
+// listen for messages on server and broadcast/sends back to all users 
 io.on("connection", socket => {
 
     socket.on("SentMessage", (data) => {
@@ -35,12 +35,18 @@ io.on("connection", socket => {
         // Goes out to all
         io.emit("receivedMessage", { userMessage: data.userMessage });
         console.log(data.userMessage)
+
+        // send to own socket
+        //socket.emit("A client said", data);
+        
+        // sends to all other sockets than the one who sent it 
+        //socket.broadcast.emit("A client said", data);
    
     });
 });
 
 
-// You need to copy the config.template.json file and fill out your own secret
+// Used to be able to establish permission for the user to enter the site and also be able to track them
 const session = require("express-session");
 const config = require("./configuration/config.json");
 app.use(session({
@@ -50,7 +56,8 @@ app.use(session({
 }));
 
 
-/* Setup Knex with Objection */
+// Objection.js is built on an SQL query builder called knex. All databases supported by knex are supported by objection.js. SQLite3,
+// Setup Knex with Objection 
 const { Model } = require('objection');
 const Knex = require('knex');
 const knexfile = require('./knexfile.js');
@@ -58,6 +65,8 @@ const knex = Knex(knexfile.development);
 
 Model.knex(knex);
 
+
+// Function for checking session id on routes request 
 function checkAuth(req, res, next) {
     if (req.session.user_id != config.sessionSecret)  {
       res.status(401).sendFile(__dirname + "/public/noAuthPage/noAuthPage.html");
@@ -67,7 +76,7 @@ function checkAuth(req, res, next) {
     };
 };
 
-// Routes 
+// Get routes for pages 
 app.get(("/"), (req, res) => {
     console.log("login");
     return res.sendFile(__dirname + "/public/loginPage/loginPage.html");
@@ -115,8 +124,7 @@ app.use(authRoute);
 app.use(profileRoute);
 
 
-
-// Port we listen to for incoming trafic
+// Port we start our server on and listen to for incoming trafic
 const port = 8888;
 
 // Error handling on server upstart

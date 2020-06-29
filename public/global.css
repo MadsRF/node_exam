@@ -5,7 +5,7 @@ body {
   margin: 0;
 }
 
-/*global css for all tabels*/
+/* global css for all tabels */
 table{
   margin-top: 1%;
   border-collapse: collapse;
@@ -21,24 +21,24 @@ tfoot {
   display: none;
 }
 
-/* row styling */
+/* row styling tabel */
 td, th {
   border: 1px solid #dddddd;
   padding: 10px;
   text-align: center;
 }
 
-/* row styling */
+/* row styling tabel */
 td{
   font-size: 1.2em;
 }
 
-/* row styling */
+/* row styling tabel */
 tr:nth-child(even) {
   background-color: #CCE3DE;
 }
 
-/* row styling */
+/* row styling tabel */
 tr:nth-child(odd) {
   background-color: #A4C3B2;
 }
@@ -81,10 +81,12 @@ tr:nth-child(odd) {
   padding-right: 2%;
 }
 
+/* profile option image */
 .profile {
   float: right;
 }
 
+/* profile option image */
 #profilePage {
   width: 50px;
   height: 50px;
@@ -138,14 +140,15 @@ input[type=text], input[type=password], select {
   padding: 4% 15%;
   width: 100%;
   margin-bottom: 10%;
-
 }
+
+/* login/signup buttons */
 .myButton:hover {
   background-color: rgb(133, 160, 145);
 }
 
 
-/*----------noAUTH------------*/
+/*----------noAUTH page------------*/
 
 .noAuth{
   padding-top: 20%;
