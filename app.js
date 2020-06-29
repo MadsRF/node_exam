@@ -125,7 +125,8 @@ app.use(profileRoute);
 
 
 // Port we start our server on and listen to for incoming trafic
-const port = 8888;
+// Uses process.env.Port to change port when running diff. scripts
+const port = process.env.PORT ? process.env.PORT : 8888;
 
 // Error handling on server upstart
 server.listen(port, (error) => {

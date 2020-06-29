@@ -1,6 +1,6 @@
 $(document).ready( () => {
 
-  // Tells our socket to run on port 8888
+  // Tells our socket to run/connect on port 8888
   const socket = io.connect(":8888");
 
   $("#messageSendButton").click(() => {
@@ -17,16 +17,16 @@ $(document).ready( () => {
     socket.emit("SentMessage", { userMessage });
       
     // Empties text input after sending 
-    $("#messageTextInput").val("")
+    $("#messageTextInput").val("");
 
   });
 
   // Used to display received message from server
   socket.on("receivedMessage", data => {
-    console.log(data.userMessage)
+    console.log(data.userMessage);
 
     $("#messageContainer").append(`<div>${data.userMessage.username}:<br> - ${data.userMessage.message}</div><br>`)
     
-});
+  });
 
 });
