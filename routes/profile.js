@@ -35,7 +35,7 @@ router.get("/currentProfile", checkAuth, (req, res) => {
 });
 
 // Route with query for altering information about the current user logged in
-router.post("/editProfile", checkAuth, (req, res) => {
+router.put("/editProfile", checkAuth, (req, res) => {
 
     const { username, password } = req.body;
     

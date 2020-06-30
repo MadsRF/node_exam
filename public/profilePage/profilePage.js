@@ -22,7 +22,7 @@ $(document).ready( () => {
         console.log(userInfo);
 
         $.ajax({
-            method: "POST",
+            method: "PUT",
             url: "/editProfile",
             data: userInfo,
             success: function (status) {
